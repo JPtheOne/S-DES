@@ -7,6 +7,13 @@ def generate_nBits(n):
         bits += randed
     return bits
 
+def splitHalf(evenBits):
+    length = len(evenBits)
+    half = length//2
+    l = evenBits[:half]
+    r = evenBits[half:]
+    return l,r
+
 def leftShift (key, n_shifts):
     for _ in range(n_shifts):
         key = key[1:] + [key[0]]
@@ -33,40 +40,23 @@ def P8 (combined_key):
         p8_applied.append(combined_key[bit])
     return p8_applied
 
-'''
-# Test-zone ---------------------------------------------------------------------------------------------
-key = "1010000010"
-print(f" key: {key}")
 
-p10 = P10(key)
-print(f"P10: {p10}")
+def subKeys_Gen(key):
+    # Finding subkey 1
+    p1 = P10(key)
+    
+    h1, h2 = splitHalf(p1)
+    sh1, sh2 = leftShift(h1,1), leftShift(h2,1)
 
-h1=p10[:5:]
-h2=p10[5::] 
-print(f"h1 = {h1} \nh2 = {h2}")
+    comb1 = sh1 + sh2
+    sub_Key1 = P8(comb1)
 
-sh1 = leftShift(h1, 1)
-sh2 = leftShift(h2, 1)
+    # Finding subkey 2
+    sh3, sh4 = leftShift(sh1,2), leftShift(sh2,2)
+    comb2 = sh3 + sh4
 
-print(f"sh1: {sh1} \n sh2: {sh2}")
+    sub_Key2 = P8(comb2)
 
-comb1 = sh1 + sh2
-print(f"Recombined halfs: {comb1}")
-k1 = P8(comb1)
-print(f"After p8: {k1}")
+    return sub_Key1, sub_Key2
 
-# for k2
-sh3 = leftShift(sh1,2)
-sh4 = leftShift(sh2,2)
 
-print(f"2 bit LS, result on: \nsh3: {sh3} \nsh4:{sh4}")
-
-comb2 = sh3 + sh4
-print("Recombined halfs: ", comb2)
-
-k2 = P8(comb2)
-
-print("K1: " + "".join(k1))
-print("K2: " + "".join(k2))
-#https://www.geeksforgeeks.org/simplified-data-encryption-standard-key-generation/
-'''
