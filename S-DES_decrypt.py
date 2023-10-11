@@ -3,8 +3,11 @@ from keyGen import *
 from k_Feistel import *
 
 ct = "00111000"
-k1 = "10100100"
-k2 = "01000011"
+k  = "1010000010"
+
+print(f"CIPHEREDTEXT: {ct}")
+k1, k2 = subKeys_Gen(k)
+print(f"SubKey1:{list_to_string(k1)}\nSubKey2: {list_to_string(k2)}")
 
 # PI, fk1, sw, fk2, IP
 ct1 = IP(ct)
@@ -20,4 +23,4 @@ f1 = feistel_Function(ct2, k1)
 print("Feistel k1:", list_to_string(f1))
 
 unciphered = PI(f1)
-print("Unciphered:", list_to_string(unciphered))
+print(f"CIPHERED TEXT:{ct}---- UNCIPHERED:", list_to_string(unciphered))

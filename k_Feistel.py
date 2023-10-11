@@ -1,5 +1,4 @@
 from iPerms import *
-from keyGen import *
 
 def get_S(half, s):
     
@@ -82,11 +81,3 @@ def feistel_Function(plaintext, key_n):
     last_Comb = x2 + r1                 # 10. Recombine Xored with r1
     return last_Comb
 
-'''
-pt = "10010111"
-k1 = "10100100"
-
-feistel1 = feistel_Function(pt, k1)
-print("Feistel round 1: ", feistel1)
-print(switchF(feistel1))
-'''

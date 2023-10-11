@@ -17,14 +17,3 @@ def list_to_string(list):
     return ''.join(list)
 
 
-'''
-#--Testing zone---------------------------------------------
-plaintext = "01011111"
-print("Original msg: ", list(plaintext))
-
-init_Permuted = IP(plaintext) 
-print("Plaintext to IP: ", init_Permuted)
-
-inv_Permuted = PI(init_Permuted)
-print("IP to Plaintext ",inv_Permuted)
-'''

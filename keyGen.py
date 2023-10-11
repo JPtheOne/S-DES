@@ -1,4 +1,5 @@
 import random
+from k_Feistel import splitHalf
 
 def generate_nBits(n):
     bits = ""
@@ -44,19 +45,17 @@ def P8 (combined_key):
 def subKeys_Gen(key):
     # Finding subkey 1
     p1 = P10(key)
-    
     h1, h2 = splitHalf(p1)
     sh1, sh2 = leftShift(h1,1), leftShift(h2,1)
-
     comb1 = sh1 + sh2
     sub_Key1 = P8(comb1)
 
     # Finding subkey 2
     sh3, sh4 = leftShift(sh1,2), leftShift(sh2,2)
     comb2 = sh3 + sh4
-
     sub_Key2 = P8(comb2)
 
     return sub_Key1, sub_Key2
 
 
+#print(subKeys_Gen("1010000010"))
