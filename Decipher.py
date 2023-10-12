@@ -29,7 +29,9 @@ def decipher (ciphered_8bit, key_10bit):
     return unciphered
 
 
+'''
 ct = "00111000"
 k  = "1010000010"
 
 print(f"Unciphered:",list_to_string(decipher(ct, k)))
+'''
