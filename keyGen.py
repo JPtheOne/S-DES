@@ -52,10 +52,8 @@ def subKeys_Gen(key):
 
     # Finding subkey 2
     sh3, sh4 = leftShift(sh1,2), leftShift(sh2,2)
-    comb2 = sh3 + sh4
+    comb2 = sh3 + sh4  
     sub_Key2 = P8(comb2)
 
     return sub_Key1, sub_Key2
 
-
-#print(subKeys_Gen("1010000010"))

@@ -1,4 +1,3 @@
-from iPerms import *
 
 def get_S(half, s):
     
@@ -30,7 +29,7 @@ def get_S(half, s):
     s_value = S[i][j]
     bin_s = bin(s_value)
 
-    return bin_s[2:]
+    return bin(s_value)[2:].zfill(2)
 
 def EP(half):
     EP_rule = [3,0,1,2,1,2,3,0]
@@ -78,6 +77,7 @@ def feistel_Function(plaintext, key_n):
     comb_S = s0 + s1                    # 7. Recombine S founds
     s_p4 = P4(comb_S)                   # 8. Apply P4 on full S
     x2 = XOR(l1, s_p4)                  # 9. L1 with P4 Xored
-    last_Comb = x2 + r1                 # 10. Recombine Xored with r1
+    last_Comb = ''.join(x2) + ''.join(r1)                 # 10. Recombine Xored with r1
     return last_Comb
+
 
