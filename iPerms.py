@@ -1,5 +1,6 @@
 
 def IP(plaintext):
+    #print("plaintext is: ",plaintext)
     IP_rule = [1,5,2,0,3,7,4,6]
     IPermuted = []
     for bit in IP_rule:

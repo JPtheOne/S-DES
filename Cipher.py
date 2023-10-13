@@ -10,7 +10,7 @@ def cipher(plaintext_8bit, key_10bit):
     #print(f"PLAINTEXT: {pt}")
     #0. Key Generation 
     k1, k2 = subKeys_Gen(k)
-    #print(f"SubKey1:{list_to_string(k1)}\nSubKey2: {list_to_string(k2)}")
+    #print(f"SubKey1:{list_to_string(   k1)}\nSubKey2: {list_to_string(k2)}")
 
     # 1. Initial Permutation
     pt1 = IP(pt)
@@ -32,8 +32,3 @@ def cipher(plaintext_8bit, key_10bit):
     ciphered = PI(f2)
     #print(f"ORIGINAL TEXT: {pt}---- CIPHERED: ",list_to_string(ciphered))
     return ciphered
-
-#pt = "00011111"
-#k  = "1010000010"
-
-#print(f"Ciphered:",list_to_string(cipher(pt, k)))
