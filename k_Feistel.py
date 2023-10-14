@@ -69,7 +69,7 @@ def switchF(bit8_key):
     return switched
 
 def feistel_Function(plaintext, key_n):
-    l1, r1 = splitHalf(plaintext)              # 2. Divide on halves
+    l1, r1 = splitHalf(plaintext)       # 2. Divide on halves
     ep1 = EP(r1)                        # 3. Apply EP on r half
     x1 = XOR(key_n, ep1)                 # 4. key XORed with EP
     l2, r2 = splitHalf(x1)              # 5. Split XORed

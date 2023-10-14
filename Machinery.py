@@ -1,6 +1,7 @@
 from Cipher import cipher
 from Decipher import decipher
 from iPerms import list_to_string
+from CT_and_SR import*
 
 def str_toBin(text):
     bits = ''.join(format(ord(i), '08b') for i in text)
@@ -46,14 +47,25 @@ def decrypt_Text(ciphered_message, key):
 
 
 # Test zone----------------------------------------------------------
-'''
-key = "1011110000"
-message = "ok, lets go"
-#print("Message to encrypt: ", message)
+# ENCRYPT ***********************************************************
+if __name__ == "__main__":
+    key = "1011110000"
+    keyword ="KEY"
+    message = "ok, lets go"
+    print(f"To encrypt:'{message}' with key {key} for ES-DES")
 
-ciphered_bits, printable_cipher = encrypt_Text(message, key)
-print(f"Ciphered text in bits: {printable_cipher}.\nNumber of ciphered bits: {len(printable_cipher)}, Number of ciphered bytes: {len(printable_cipher)//8}")
+    encrypted_message = encrypt_esDES(message, keyword)
+    print("TEXTER AFTER CT & SR: ",encrypted_message)
+
+    ciphered_bits, printable_cipher = encrypt_Text(encrypted_message, key)
+    print(f"Ciphered text in bits: {printable_cipher}.\nNumber of ciphered bits: {len(printable_cipher)}, Number of ciphered bytes: {len(printable_cipher)//8}")
 
 
-ciphered_msg = "100111001111100101000001000110111101010111001101100001111111110000011011110100101001110000011011"
-'''
+    # DECRYPT ***********************************************************
+    print("----------------------------------NOW DECRYPTING--------------------------------------")
+
+    decrypted_str = decrypt_Text(printable_cipher, key)
+    print("DECIPHERED BUT WITH CT & SR:",decrypted_str)
+
+    decrypted_message = decrypt_esDES(decrypted_str, keyword)
+    print("Decrypted text: ", decrypted_message)
