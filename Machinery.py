@@ -48,11 +48,15 @@ def decrypt_Text(ciphered_message, key):
 
 
 if __name__ == "__main__":
-    # ENCRYPT ***********************************************************
+    
+    # VARIABLES TO CHANGE-----------------------------------------
     key = "1011110000"
     keyword ="KEY"
     message = "ok, lets go"
     print(f"To encrypt:'{message}' with key {key} for ES-DES")
+
+    # ENCRYPT ***********************************************************
+    print("----------------------------------NOW ENCRYPTING--------------------------------------")
 
     encrypted_message = encrypt_esDES(message, keyword)
     print("TEXTER AFTER CT & SR: ",encrypted_message)
