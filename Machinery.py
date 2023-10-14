@@ -46,9 +46,9 @@ def decrypt_Text(ciphered_message, key):
     return unciphered_text
 
 
-# Test zone----------------------------------------------------------
-# ENCRYPT ***********************************************************
+
 if __name__ == "__main__":
+    # ENCRYPT ***********************************************************
     key = "1011110000"
     keyword ="KEY"
     message = "ok, lets go"
